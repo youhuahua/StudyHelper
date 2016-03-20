@@ -11,17 +11,11 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.android.volley.*;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
-import com.example.googleplay.R;
-import com.example.googleplay.util.FileUtils;
-import com.example.volley.AuthFailureError;
-import com.example.volley.NetworkError;
-import com.example.volley.NetworkResponse;
-import com.example.volley.ParseError;
-import com.example.volley.RequestQueue;
-import com.example.volley.Response;
-import com.example.volley.VolleyError;
+import com.example.studyhelper.R;
+import com.example.studyhelper.utils.FileUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -52,12 +46,10 @@ public abstract class NetWorkResponse<E> {
 		}
 		if (errorListener == null) {
 			errorListener = new Response.ErrorListener() {
-
 				@Override
-				public void onErrorResponse(VolleyError volleyError) {
+				public void onErrorResponse(VolleyError volleyError, Object o) {
 					errorResponce(context, url, volleyError);
 				}
-
 			};
 		}
 		StringRequest request = new StringRequest(method, url, new Response.Listener<String>() {
@@ -87,7 +79,7 @@ public abstract class NetWorkResponse<E> {
 			}
 		};
 		request.setTag(NetRequest.TAG);
-		NetRequest.getInstance(context.getApplicationContext()).getRequestQueue().add(request);
+		NetRequest.getInstance(context.getApplicationContext()).getRequestQueue().add(request,context);
 	}
 
 	/**

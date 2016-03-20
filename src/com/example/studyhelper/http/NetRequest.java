@@ -83,7 +83,7 @@ public class NetRequest {
 	}
 
 	public <T> void addToRequestQueue(Request<T> req) {
-		getRequestQueue().add(req);
+		getRequestQueue().add(req,mCtx);
 	}
 
 	public ImageLoader getImageLoader() {

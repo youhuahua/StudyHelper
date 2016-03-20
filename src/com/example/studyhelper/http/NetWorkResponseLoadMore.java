@@ -1,22 +1,16 @@
 package com.example.studyhelper.http;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Map;
-
 import android.content.Context;
 import android.text.TextUtils;
 import android.widget.Toast;
-
+import com.android.volley.*;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
-import com.example.googleplay.R;
-import com.example.googleplay.util.FileUtils;
-import com.example.volley.AuthFailureError;
-import com.example.volley.NetworkError;
-import com.example.volley.NetworkResponse;
-import com.example.volley.ParseError;
-import com.example.volley.Response;
-import com.example.volley.VolleyError;
+import com.example.studyhelper.R;
+import com.example.studyhelper.utils.FileUtils;
+
+import java.io.UnsupportedEncodingException;
+import java.util.Map;
 
 public abstract class NetWorkResponseLoadMore {
 	private Context context;
@@ -39,7 +33,7 @@ public abstract class NetWorkResponseLoadMore {
 			errorListener = new Response.ErrorListener() {
 
 				@Override
-				public void onErrorResponse(VolleyError volleyError) {
+				public void onErrorResponse(VolleyError volleyError, Object o) {
 					errorResponce(url, volleyError);
 				}
 			};
@@ -72,7 +66,7 @@ public abstract class NetWorkResponseLoadMore {
 		};
 		request.setTag(NetRequest.TAG);
 
-		NetRequest.getInstance(context.getApplicationContext()).getRequestQueue().add(request);
+		NetRequest.getInstance(context.getApplicationContext()).getRequestQueue().add(request,context);
 	}
 
 	private void successResponse(final Context context, final String url, String backResult) {
