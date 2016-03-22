@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+        >
+    <EditText
+            android:id="@+id/etUserName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            />
+    <EditText
+            android:id="@+id/etPassWord"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:inputType="number"
+            />
+    <RadioGroup
+            android:id="@+id/rg"
+            android:layout_width="match_parent" android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+        <RadioButton
+                android:id="@+id/rbStudent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="学生"/>
+        <RadioButton
+                android:id="@+id/rbTeacher"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="老师"/>
+        <RadioButton
+                android:id="@+id/rbParent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="家长"/>
+    </RadioGroup>
+    <Button
+            android:id="@+id/btSubmit"
+            android:layout_width="match_parent" android:layout_height="50dp"
+            android:gravity="center"
+            android:text="注册"/>
+
+</LinearLayout>
+

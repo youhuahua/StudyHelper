@@ -1,16 +1,28 @@
 package com.example.studyhelper.activity;
 
-import android.app.Activity;
-import android.os.Bundle;
-import com.example.studyhelper.R;
+import com.example.studyhelper.base.BaseActivity;
 
-public class MainActivity extends Activity {
-    /**
-     * Called when the activity is first created.
-     */
+/**
+ * Title:
+ * Description:
+ * Company:
+ *
+ * @author qianchao
+ * @date 2016-3-2222:03
+ */
+public class MainActivity extends BaseActivity {
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+    protected int getLayoutId() {
+        return 0;
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+
     }
 }

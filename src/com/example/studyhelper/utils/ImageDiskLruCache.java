@@ -41,7 +41,7 @@ import android.util.Log;
  * A simple disk LRU bitmap cache to illustrate how a disk cache would be used
  * for bitmap caching. A much more robust and efficient disk LRU cache solution
  * can be found in the ICS source code
- * (libcore/luni/src/main/java/libcore/io/DiskLruCache.java) and is preferable
+ * (libcore/luni/src/activity_signup/java/libcore/io/DiskLruCache.java) and is preferable
  * to this simple implementation.
  */
 public class ImageDiskLruCache {
