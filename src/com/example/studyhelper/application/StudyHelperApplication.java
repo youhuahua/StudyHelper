@@ -7,11 +7,20 @@ import android.os.Build;
 import android.support.v4.util.LruCache;
 import android.util.Log;
 import cn.bmob.v3.Bmob;
+import com.example.studyhelper.user.User;
 import com.example.studyhelper.utils.Config;
 
 
 public class StudyHelperApplication extends Application {
+	public User getMyUser() {
+		return myUser;
+	}
 
+	public void setMyUser(User myUser) {
+		this.myUser = myUser;
+	}
+
+	private User myUser;
 	@Override
 	public void onCreate() {
 		super.onCreate();

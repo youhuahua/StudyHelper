@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.*;
 import cn.bmob.v3.listener.SaveListener;
 import com.example.studyhelper.R;
+import com.example.studyhelper.application.StudyHelperApplication;
 import com.example.studyhelper.base.BaseActivity;
 import com.example.studyhelper.user.User;
 import org.w3c.dom.Text;
@@ -63,7 +64,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         });
     }
 
-    private void login(String username, String password) {
+    private void login(final String username, final String password) {
         final User myUser = new User();
         myUser.setUsername(username);
         myUser.setPassword(password);
@@ -72,7 +73,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
             @Override
             public void onSuccess() {
+                editor.putString("password", username);
+                editor.putString("password", password).commit();
+                if (progressDialog.isShowing()){
+                    progressDialog.dismiss();
+                }
                 showToast("登录成功");
+                application.setMyUser(myUser);
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
 
             @Override
@@ -84,7 +92,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     protected void initData() {
-
+        String username = spUtil.getString("username","");
+        String password = spUtil.getString("password", "");
+        if (!TextUtils.isEmpty(username)&&!TextUtils.isEmpty(password)){
+            progressDialog.show();
+            login(username, password);
+        }
     }
 
     @Override

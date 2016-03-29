@@ -7,12 +7,21 @@
     <EditText
             android:id="@+id/etUserName"
             android:layout_width="match_parent"
+            android:hint="请输入用户名"
             android:layout_height="50dp"
             />
     <EditText
             android:id="@+id/etPassWord"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:hint="请输入密码"
+            android:inputType="number"
+            />
+    <EditText
+            android:id="@+id/etReputPas"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="请再次输入密码"
             android:inputType="number"
             />
     <RadioGroup

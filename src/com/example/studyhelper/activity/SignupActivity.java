@@ -12,7 +12,7 @@ import com.example.studyhelper.base.BaseActivity;
 import com.example.studyhelper.user.User;
 
 public class SignupActivity extends BaseActivity {
-    private EditText etUserName, etPassWord;
+    private EditText etUserName, etPassWord, etReputPas;
     private Button btSubmit;
     private RadioGroup rg;
     private RadioButton rbStudent, rbTeacher, rbParent;
@@ -27,6 +27,7 @@ public class SignupActivity extends BaseActivity {
     protected void initView() {
         etUserName = (EditText) findViewById(R.id.etUserName);
         etPassWord = (EditText) findViewById(R.id.etPassWord);
+        etReputPas = (EditText) findViewById(R.id.etReputPas);
         btSubmit = (Button) findViewById(R.id.btSubmit);
         rg = (RadioGroup) findViewById(R.id.rg);
         rbStudent = (RadioButton) findViewById(R.id.rbStudent);
@@ -53,12 +54,17 @@ public class SignupActivity extends BaseActivity {
             public void onClick(View v) {
                 String username = etUserName.getText().toString().trim();
                 String password = etUserName.getText().toString().trim();
+                String rePas = etReputPas.getText().toString().trim();
                 if (TextUtils.isEmpty(username)) {
-                    showToast("用户名不能为空");
+                    showToast("用户名不能为空!");
                     return;
                 }
                 if (TextUtils.isEmpty(password)) {
-                    showToast("密码不能为空");
+                    showToast("密码不能为空!");
+                    return;
+                }
+                if (!rePas.equals(password)) {
+                    showToast("两次输入的密码不正确，请重新输入!");
                     return;
                 }
                 signUp(username, password);
@@ -66,7 +72,7 @@ public class SignupActivity extends BaseActivity {
         });
     }
 
-    private void signUp(String username, String password) {
+    private void signUp(final String username, final String password) {
         final User myUser = new User();
         myUser.setUsername(username);
         myUser.setPassword(password);
@@ -76,12 +82,14 @@ public class SignupActivity extends BaseActivity {
             @Override
             public void onSuccess() {
                 System.out.println("Token值:" + myUser.getSessionToken());
+                editor.putString("password", username);
+                editor.putString("password", password).commit();
                 showToast("注册成功");
             }
 
             @Override
             public void onFailure(int code, String msg) {
-               showToast("注册失败"+msg);
+                showToast("注册失败" + msg);
             }
         });
     }
